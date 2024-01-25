@@ -1,28 +1,42 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <JsonViewer
+      :value="data"
+      :key-name="false"
+      :path="[]"
+      :show-action-form="true"
+    />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import JsonViewer from "./components/JsonViewer.vue";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    JsonViewer,
+  },
+  data: function () {
+    return {
+      data: {
+        Hello: "hello",
+        word: [1, 2, 3],
+        escaped: "[1,2,3, 0.13478545645487878]",
+        search: '{"key1": "abc", "status": 1}',
+        data: { key1: "abc", status: 1 },
+      },
+    };
   },
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 </style>

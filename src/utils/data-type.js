@@ -1,3 +1,5 @@
+import BigNumber from "bignumber.js";
+
 // Constants
 export const DataType = {
   STRING: 0,
@@ -12,13 +14,16 @@ export const DataType = {
 export function valueType(value) {
   let type;
 
+  if (isBigNumber(value)) {
+    return DataType.BIGNUMBER;
+  }
+
   // Establish value type
   if (typeof value === "string") type = DataType.STRING;
   else if (typeof value === "number") type = DataType.NUMBER;
   else if (value === false || value === true) type = DataType.BOOL;
   else if (value === null) type = DataType.NULL;
   else if (value instanceof Array) type = DataType.ARRAY;
-  else if (value?.constructor?.name === "BigNumber") type = DataType.BIGNUMBER;
   else type = DataType.OBJECT;
 
   return type;
@@ -33,7 +38,7 @@ export function isNumber(value) {
 }
 
 export function isBigNumber(value) {
-  return DataType.BIGNUMBER === valueType(value);
+  return BigNumber.isBigNumber(value);
 }
 
 export function isBool(value) {

@@ -74,11 +74,9 @@ export default {
   },
   methods: {
     searchFieldUpdate: function (event) {
-      console.log(event, event.target.value);
       this.searchField = event.target.value;
     },
     formatInnerJsonStringUpdate: function (event) {
-      console.log(event, event.target.checked);
       this.formatInnerJsonString = event.target.checked;
     },
   },

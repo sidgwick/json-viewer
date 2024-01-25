@@ -1,11 +1,13 @@
 import JSONbig from "json-bigint";
 
+import { isBigNumber } from "./data-type";
+
 export function expandInnerJsonString(val) {
   if (!val) {
     return val;
   }
 
-  if (val?.constructor?.name === "BigNumber") {
+  if (isBigNumber(val)) {
     return val;
   } else if (typeof val === "string") {
     // 字符串类型尝试反序列化, 如果可以反序列化处理之, 不可以则保持原状.
@@ -42,7 +44,7 @@ export function clearNonMatchPath(obj, searchName) {
     return null;
   }
 
-  if (obj?.constructor?.name === "BigNumber") {
+  if (isBigNumber(obj)) {
     return null;
   }
 
@@ -54,10 +56,7 @@ export function clearNonMatchPath(obj, searchName) {
     }
 
     if (nVal.length > 0) return nVal;
-  } else if (
-    typeof obj === "object" &&
-    obj?.constructor?.name !== "BigNumber"
-  ) {
+  } else if (typeof obj === "object") {
     const nVal = {};
     for (const objKey in obj) {
       const val = obj[objKey];

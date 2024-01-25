@@ -1,12 +1,11 @@
 import JSONbig from "json-bigint";
-import BigNumber from "bignumber.js";
 
 export function expandInnerJsonString(val) {
   if (!val) {
     return val;
   }
 
-  if (val instanceof BigNumber) {
+  if (val?.constructor?.name === "BigNumber") {
     return val;
   } else if (typeof val === "string") {
     // 字符串类型尝试反序列化, 如果可以反序列化处理之, 不可以则保持原状.
@@ -43,7 +42,7 @@ export function clearNonMatchPath(obj, searchName) {
     return null;
   }
 
-  if (obj instanceof BigNumber) {
+  if (obj?.constructor?.name === "BigNumber") {
     return null;
   }
 

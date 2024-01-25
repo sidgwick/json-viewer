@@ -7,20 +7,12 @@
         : 'json-viewer-without-action-form',
     ]"
   >
-    <div v-if="showActionForm" class="action-form">
-      <div class="el-input">
-        <input
-          type="text"
-          autocomplete="off"
-          v-model="searchField"
-          placeholder="搜索字段"
-        />
-      </div>
-      <div role="switch" class="el-switch">
-        <input v-model="formatInnerJsonString" type="checkbox" />
-        <span class="label">格式化内部JSON</span>
-      </div>
-    </div>
+    <ActionForm
+      v-if="showActionForm"
+      class="action-form"
+      :searchFieldUpdate="searchFieldUpdate"
+      :formatInnerJsonStringUpdate="formatInnerJsonStringUpdate"
+    />
 
     <BasicViewer
       class="viewer"
@@ -33,12 +25,14 @@
 
 <script>
 import BasicViewer from "./BasicViewer.vue";
+import ActionForm from "./ActionForm.vue";
 import { expandInnerJsonString, clearNonMatchPath } from "@/utils/json";
 
 export default {
   name: "JsonViewer",
   components: {
     BasicViewer,
+    ActionForm,
   },
   props: {
     value: {
@@ -78,7 +72,16 @@ export default {
       return clearNonMatchPath(value, this.searchField);
     },
   },
-  methods: {},
+  methods: {
+    searchFieldUpdate: function (event) {
+      console.log(event, event.target.value);
+      this.searchField = event.target.value;
+    },
+    formatInnerJsonStringUpdate: function (event) {
+      console.log(event, event.target.checked);
+      this.formatInnerJsonString = event.target.checked;
+    },
+  },
 };
 </script>
 

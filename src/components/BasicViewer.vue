@@ -113,7 +113,6 @@ export default {
   },
   computed: {
     rootType() {
-      console.log(this.keyName, this.keyName instanceof Number);
       if (this.keyName === false) {
         return "";
       }

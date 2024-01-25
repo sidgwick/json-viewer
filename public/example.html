@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8" />
+    <title>json-viewer</title>
+    <script src="../dist/json-viewer.js"></script>
+    <script>
+      window.onload = function () {
+        const dom = document.getElementById("abc");
+
+        dom.path = [];
+        dom.showActionForm = true;
+        dom.keyName = false;
+        dom.value = {
+          Hello: "hello",
+          word: [1, 2, 3],
+          escaped: "[1,2,3, 0.13478545645487878]",
+          search: '{"key1": "abc", "status": 1}',
+          data: { key1: "abc", status: 1 },
+        };
+      };
+    </script>
+  </head>
+  <body>
+    <!--
+        BUILD Web Component with:
+        
+        ```bash
+        yarn run build -- --target wc --name json-viewer --inline-vue src/components/JsonViewer.vue
+        ```
+     -->
+
+    <json-viewer id="abc"></json-viewer>
+  </body>
+</html>

@@ -1,6 +1,6 @@
 <template>
   <div class="viewer">
-    <span :class="['kvov', keyName !== false ? 'objProp' : 'arrElem']">
+    <span :class="['kvov', rootType]">
       <!-- expander -->
       <span
         v-if="isComplexType"
@@ -9,7 +9,7 @@
       />
 
       <!-- object-key -->
-      <span v-if="keyName !== false">
+      <span v-if="rootType === 'objProp'">
         <span>"</span>
         <span class="k" :_path="path.join('.')">{{
           JSON.stringify(keyName).slice(1, -1)
@@ -73,7 +73,7 @@
           v-show="isNoneZeroSize && !collapsed"
           :key="`[${index}]` + index"
           :value="item"
-          :key-name="false"
+          :key-name="index"
           :path="[...path, `[${index}]`]"
           :show-comma="index !== value.length - 1"
         />
@@ -112,6 +112,18 @@ export default {
     };
   },
   computed: {
+    rootType() {
+      console.log(this.keyName, this.keyName instanceof Number);
+      if (this.keyName === false) {
+        return "";
+      }
+
+      if (typeof this.keyName === "number") {
+        return "arrElem";
+      }
+
+      return "objProp";
+    },
     escapedString() {
       var ss = JSONbig.stringify(this.value);
       return ss.substring(1, ss.length - 1);
@@ -235,6 +247,10 @@ export default {
   padding-left: 24px;
   border-left: 1px dotted #bbb;
   margin-left: 2px;
+}
+
+.arrElem {
+  border-left: 1px dotted #bbb;
 }
 
 /* SYNTAX HIGHLIGHTING */

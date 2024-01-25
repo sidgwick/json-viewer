@@ -85,6 +85,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .json-viewer {
+  display: block;
   position: relative;
   width: 100%;
 

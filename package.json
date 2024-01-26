@@ -1,11 +1,15 @@
 {
     "name": "json-viewer-web",
-    "version": "0.1.8",
+    "version": "0.1.12",
     "private": false,
     "scripts": {
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
-        "lint": "vue-cli-service lint"
+        "build:wc": "vue-cli-service build --target wc --name json-viewer --inline-vue src/components/JsonViewer.vue",
+        "lint": "vue-cli-service lint",
+        "prepub": "cp package.json dist && cp dist/{json-viewer.min,index}.js",
+        "pub": "cd dist && npm publish",
+        "postpub": "echo done"
     },
     "dependencies": {
         "core-js": "^3.8.3",
@@ -28,7 +32,6 @@
         "vue-template-compiler": "^2.6.14"
     },
     "files": [
-        "dist/json-viewer.min.js",
-        "dist/json-viewer.min.js.map"
+        "index.js"
     ]
 }

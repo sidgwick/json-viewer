@@ -16,16 +16,5 @@ export default defineConfig({
             '@utils': resolve('src/utils'),
             '@styles': resolve('src/styles')
         }
-    },
-    build: {
-        lib: {
-            entry: 'src/wc.ts',
-            name: 'json viewer Web Component library',
-        },
-        rollupOptions: {
-            output: {
-                entryFileNames: `[name].js`,
-            }
-        }
     }
 })

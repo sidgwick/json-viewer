@@ -14,7 +14,7 @@ export const DataType = {
 export function valueType(value: any) {
     let type;
 
-    if (isBigNumber(value)) {
+    if (BigNumber.isBigNumber(value)) {
         return DataType.BIGNUMBER;
     }
 
@@ -29,30 +29,3 @@ export function valueType(value: any) {
     return type;
 }
 
-export function isString(value: any) {
-    return DataType.STRING === valueType(value);
-}
-
-export function isNumber(value: any) {
-    return DataType.NUMBER === valueType(value);
-}
-
-export function isBigNumber(value: any) {
-    return BigNumber.isBigNumber(value);
-}
-
-export function isBool(value: any) {
-    return DataType.BOOL === valueType(value);
-}
-
-export function isNull(value: any) {
-    return DataType.NULL === valueType(value);
-}
-
-export function isObject(value: any) {
-    return DataType.OBJECT === valueType(value);
-}
-
-export function isArray(value: any) {
-    return DataType.ARRAY === valueType(value);
-}

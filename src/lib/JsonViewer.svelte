@@ -1,3 +1,5 @@
+<svelte:options customElement="json-viewer" />
+
 <script lang="ts">
   import BasicViewer from "./BasicViewer.svelte";
   import ActionForm from "./ActionForm.svelte";

@@ -1,7 +1,7 @@
 <script lang="ts">
   import * as dataType from "@utils/data-type";
   import { DataType, valueType } from "@utils/data-type";
-  import { Stringify } from "@/utils/bignumber-json";
+  import JSONBigFix from "@utils/bignumber-json";
 
   export let value: any;
   export let keyName: any;
@@ -24,7 +24,7 @@
   }
 
   function escapedString(val: string): string {
-    let ss = Stringify(val);
+    let ss = JSONBigFix.stringify(val);
     return ss.substring(1, ss.length - 1);
   }
 

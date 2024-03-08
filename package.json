@@ -21,6 +21,6 @@
     },
     "dependencies": {
         "bignumber.js": "^9.0.0",
-        "json-bigint": "^1.0.0"
+        "lossless-json": "^4.0.1"
     }
 }

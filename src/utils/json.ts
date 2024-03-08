@@ -1,5 +1,5 @@
 import BigNumber from "bignumber.js";
-import { Parse } from "./bignumber-json";
+import JSONBigFix from "./bignumber-json";
 
 export function expandInnerJsonString(val: any) {
     if (!val) {
@@ -11,7 +11,7 @@ export function expandInnerJsonString(val: any) {
     } else if (typeof val === "string") {
         // 字符串类型尝试反序列化, 如果可以反序列化处理之, 不可以则保持原状.
         try {
-            val = Parse(val);
+            val = JSONBigFix.parse(val);
         } catch (e) {
             console.debug("[ignore] parse json failed", val, e);
         }

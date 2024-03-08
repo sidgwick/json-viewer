@@ -1,37 +1,21 @@
 {
-    "name": "json-viewer-web",
-    "version": "0.1.12",
-    "private": false,
-    "scripts": {
-        "serve": "vue-cli-service serve",
-        "build": "vue-cli-service build",
-        "build:wc": "vue-cli-service build --target wc --name json-viewer --inline-vue src/components/JsonViewer.vue",
-        "lint": "vue-cli-service lint",
-        "prepub": "cp package.json dist && cp dist/{json-viewer.min,index}.js",
-        "pub": "cd dist && npm publish",
-        "postpub": "echo done"
-    },
-    "dependencies": {
-        "core-js": "^3.8.3",
-        "json-bigint": "^1.0.0",
-        "vue": "^2.6.14"
-    },
-    "devDependencies": {
-        "@babel/core": "^7.12.16",
-        "@babel/eslint-parser": "^7.12.16",
-        "@vue/cli-plugin-babel": "~5.0.0",
-        "@vue/cli-plugin-eslint": "~5.0.0",
-        "@vue/cli-service": "~5.0.0",
-        "eslint": "^7.32.0",
-        "eslint-config-prettier": "^8.3.0",
-        "eslint-plugin-prettier": "^4.0.0",
-        "eslint-plugin-vue": "^8.0.3",
-        "prettier": "^2.4.1",
-        "sass": "^1.32.7",
-        "sass-loader": "^12.0.0",
-        "vue-template-compiler": "^2.6.14"
-    },
-    "files": [
-        "index.js"
-    ]
+  "name": "json-viewer-wc",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "svelte-check --tsconfig ./tsconfig.json"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^3.0.2",
+    "@tsconfig/svelte": "^5.0.2",
+    "svelte": "^4.2.11",
+    "svelte-check": "^3.6.4",
+    "tslib": "^2.6.2",
+    "typescript": "^5.2.2",
+    "vite": "^5.1.4"
+  }
 }

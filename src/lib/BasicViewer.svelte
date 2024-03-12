@@ -247,7 +247,7 @@
   span.b,
   span.ell,
   span.comma {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 
   .blockInner {

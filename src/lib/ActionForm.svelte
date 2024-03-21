@@ -11,12 +11,10 @@
 <div class="action-form">
   <div class="action-block">
     <button type="button" class="raw" on:click={onRawClick}>Raw</button>
-    <button type="button" class="copy" on:click={onCopyClick}>
-      <img src="assets/copy.svg" alt="Copy" />
-    </button>
-    <button type="button" class="download" on:click={onDownloadClick}>
-      <img src="assets/download.svg" alt="Download" />
-    </button>
+    <button type="button" class="copy" on:click={onCopyClick}>Copy</button>
+    <button type="button" class="download" on:click={onDownloadClick}
+      >Download</button
+    >
   </div>
 
   <div class="input-block">
@@ -56,10 +54,6 @@
     button {
       margin-right: 5px;
       height: 22px;
-    }
-
-    img {
-      min-height: 16px;
     }
   }
 

@@ -1,22 +1,23 @@
 import { stringify, parse } from "lossless-json";
 import BigNumber from "bignumber.js";
 
-const parseDecimal = (value: string) => new BigNumber(value)
+const parseDecimal = (value: string) => new BigNumber(value);
 
 const decimalStringifier = {
-    test: (value: any) => BigNumber.isBigNumber(value),
-    stringify: (value: any) => value.toString()
-}
-
+  test: (value: any) => BigNumber.isBigNumber(value),
+  stringify: (value: any) => value.toString(),
+};
 
 export default class JSONBigFix {
-    static parse(text: string): any {
-        return parse(text, undefined, parseDecimal)
-    }
+  static parse(text: string): any {
+    return parse(text, undefined, parseDecimal);
+  }
 
-    static stringify(value: any): string {
-        return stringify(value, undefined, undefined, [decimalStringifier]) ?? ""
-    }
+  static stringify(
+    value: any,
+    replacer?: Replacer | null,
+    space?: number | string
+  ): string {
+    return stringify(value, replacer, space, [decimalStringifier]) ?? "";
+  }
 }
-
-

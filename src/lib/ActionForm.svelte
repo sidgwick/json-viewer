@@ -1,11 +1,24 @@
 <script lang="ts">
-  import type { ChangeEventHandler } from "svelte/elements";
+  import type { ChangeEventHandler, MouseEventHandler } from "svelte/elements";
 
   export let searchFieldUpdate: ChangeEventHandler<HTMLInputElement>;
   export let formatInnerJsonStringUpdate: ChangeEventHandler<HTMLInputElement>;
+  export let onRawClick: MouseEventHandler<HTMLButtonElement>;
+  export let onCopyClick: MouseEventHandler<HTMLButtonElement>;
+  export let onDownloadClick: MouseEventHandler<HTMLButtonElement>;
 </script>
 
 <div class="action-form">
+  <div class="action-block">
+    <button type="button" class="raw" on:click={onRawClick}>Raw</button>
+    <button type="button" class="copy" on:click={onCopyClick}>
+      <img src="assets/copy.svg" alt="Copy" />
+    </button>
+    <button type="button" class="download" on:click={onDownloadClick}>
+      <img src="assets/download.svg" alt="Download" />
+    </button>
+  </div>
+
   <div class="input-block">
     <input placeholder="搜索字段" on:input={searchFieldUpdate} />
     <i class="suffix-icon"></i>
@@ -31,6 +44,22 @@
 
     > div {
       margin: 5px;
+    }
+  }
+
+  .action-block {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: flex-start;
+
+    button {
+      margin-right: 5px;
+      height: 22px;
+    }
+
+    img {
+      min-height: 16px;
     }
   }
 

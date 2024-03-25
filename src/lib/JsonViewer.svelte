@@ -78,7 +78,7 @@
       className=""
     />
   {:else}
-    <pre>{JSONBigFix.stringify(xValue, null, 2)}</pre>
+    <pre class="raw-json-content">{JSONBigFix.stringify(xValue, null, 2)}</pre>
   {/if}
 </div>
 
@@ -94,6 +94,10 @@
 
     &.json-viewer-without-action-form {
       min-height: 20px;
+    }
+
+    .raw-json-content {
+      margin: 0;
     }
   }
 </style>

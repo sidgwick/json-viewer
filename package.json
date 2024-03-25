@@ -1,7 +1,7 @@
 {
     "name": "json-viewer-web",
     "private": false,
-    "version": "0.2.7",
+    "version": "0.2.8",
     "type": "module",
     "scripts": {
         "dev": "vite",
@@ -9,7 +9,7 @@
         "build-wc": "vite build -c vite.config.wc.ts",
         "preview": "vite preview",
         "check": "svelte-check --tsconfig ./tsconfig.json",
-        "prepub": "npm run build-wc && cp package.json dist",
+        "prepub": "npm run build-wc && cp package-wc.json dist/package.json",
         "pub": "cd dist && npm publish",
         "postpub": "echo done"
     },

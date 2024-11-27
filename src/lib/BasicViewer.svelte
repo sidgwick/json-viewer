@@ -83,7 +83,7 @@
       <span class="object-key">
         <span class="double-quotation">"</span>
         <span class="k" data-path={path.join(".")}>
-          {JSON.stringify(keyName).slice(1, -1)}
+          {JSON.stringify(keyName)?.slice(1, -1)}
         </span>
         <span class="double-quotation">":{"\u00A0"}</span>
       </span>

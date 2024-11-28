@@ -34,15 +34,16 @@ export default defineConfig({
         "json-viewer": "src/lib/JsonViewer.svelte",
         "character-form": "src/lib/CharacterForm.svelte",
       },
-      formats: ["es", "umd"],
-      fileName: "json-viewer",
+      formats: ["es"],
       name: `[name].js`,
     },
     rollupOptions: {
       external: ["svelte"],
-      //   output: {
-      //     entryFileNames: `[name].js`,
-      //   },
+      output: {
+        entryFileNames: `[name].js`,
+        chunkFileNames: `[name].js`,
+        assetFileNames: `[name].[ext]`,
+      },
       plugins: [
         babel({
           extensions: [".js", ".ts"],

@@ -19,6 +19,13 @@ export default defineConfig({
       "@styles": resolve("src/styles"),
     },
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: "modern-compiler", // or "modern"
+      },
+    },
+  },
   build: {
     lib: {
       entry: "src/lib/JsonViewer.svelte",

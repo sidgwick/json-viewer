@@ -130,7 +130,7 @@
           <span class="ell">...</span>
         {/if}
 
-        {#each Object.keys(value).entries() as [index, name]}
+        {#each Object.keys(value ?? {}).entries() as [index, name]}
           {@const item = value[name]}
 
           {#if isNoneZeroSize(value) && !collapsed}

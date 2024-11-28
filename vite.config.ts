@@ -2,6 +2,8 @@ import { defineConfig } from "vite";
 import { resolve } from "path";
 import { svelte } from "@sveltejs/vite-plugin-svelte";
 
+import babel from "@rollup/plugin-babel";
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -38,6 +40,24 @@ export default defineConfig({
       //   output: {
       //     entryFileNames: `[name].js`,
       //   },
+      plugins: [
+        babel({
+          extensions: [".js", ".ts"],
+          babelHelpers: "runtime",
+          plugins: ["@babel/plugin-transform-runtime"],
+          presets: [
+            [
+              "@babel/preset-env",
+              {
+                useBuiltIns: false,
+                targets: {
+                  browsers: ["last 2 versions", "> 1%", "not ie <= 11"],
+                },
+              },
+            ],
+          ],
+        }),
+      ],
     },
   },
 });

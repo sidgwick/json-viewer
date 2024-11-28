@@ -1,11 +1,34 @@
+<svelte:options customElement="character-form" />
+
 <script lang="ts">
-  import { IsPrint } from "@/utils/char";
   import Char from "./Char.svelte";
 
-  export let input: String = "";
+  $: showCode = false;
+  $: input = "";
+
+  let testCode: HTMLElement;
+
+  const copyTest = () => {
+    input = testCode.innerText;
+  };
+
+  const toggleShowCode = () => {
+    showCode = !showCode;
+  };
 </script>
 
 <div class="main">
+  <div class="tips">
+    可以使用下面的文本来体验功能:
+
+    <button on:click={copyTest}>点我试试</button>
+
+    <pre><code bind:this={testCode}
+        >#豹5 ⍅ #电⑕:驱越野·悦己宜家 #豹8  #国货旗舰·智勇双全
+58同行，车展​顶流，人气豹棚\n广州广交会展馆2.1馆 方程豹展台 a</code
+      ></pre>
+  </div>
+
   <div class="form">
     <!-- svelte-ignore a11y-label-has-associated-control -->
     <label class="form-label">待检测文本</label>
@@ -14,14 +37,21 @@
       name="example-textarea-input"
       rows="12"
       cols="80"
-      placeholder="Content..">{input}</textarea
-    >
+      bind:value={input}
+      placeholder="Content.."
+    ></textarea>
   </div>
 
-  <div class="result">
-    {#each { length: input.length } as _, i}
-      <Char char={input[i]} />
-    {/each}
+  <div>
+    <button on:click={toggleShowCode}>
+      {showCode ? "显示红点" : "显示码点"}
+    </button>
+
+    <div class="result">
+      {#each { length: input.length } as _, i}
+        <Char char={input[i]} {showCode} />
+      {/each}
+    </div>
   </div>
 </div>
 
@@ -39,10 +69,11 @@
       margin-top: 20px;
       max-width: 600px;
       word-wrap: normal;
+    }
 
-      .red-dot {
-        color: red;
-      }
+    pre {
+      background-color: #ececec;
+      border: 1px solid black;
     }
   }
 </style>

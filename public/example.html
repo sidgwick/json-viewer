@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title>json-viewer</title>
-    <script src="/wc.js"></script>
+    <script src="json-viewer.umd.cjs"></script>
     <script>
       window.onload = function () {
         const jv = document.createElement("json-viewer");
@@ -25,14 +25,6 @@
     </script>
   </head>
   <body>
-    <!--
-        BUILD Web Component with:
-        
-        ```bash
-        yarn run build -- --target wc --name json-viewer --inline-vue src/components/JsonViewer.vue
-        ```
-     -->
-
     <div id="application"></div>
   </body>
 </html>

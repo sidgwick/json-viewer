@@ -29,7 +29,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: "src/lib/JsonViewer.svelte",
-      formats: ["es"],
+      formats: ["es", "umd"],
       fileName: "json-viewer",
       name: `[name].js`,
     },

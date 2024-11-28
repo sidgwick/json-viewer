@@ -9,7 +9,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
-    "prepub": "npm run build && cp package.json dist/package.json",
+    "prepub": "vite build && cp package.json dist/package.json",
     "pub": "cd dist && npm publish",
     "postpub": "echo done"
   },
